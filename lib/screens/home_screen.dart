@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:we_chat/main.dart';
+import 'package:we_chat/widgets/chat_user_card.dart';
 
 import '../api/apis.dart';
 
@@ -36,6 +37,14 @@ class _HomeScreenState extends State<HomeScreen> {
           child: const Icon(Icons.add_comment_rounded),
         ),
       ),
+
+      body: ListView.builder(
+          itemCount: 16,
+          padding: EdgeInsets.only(top: mq.height * 0.01),
+          physics: const BouncingScrollPhysics(),
+          itemBuilder: (context, item) {
+            return const ChatUserCard();
+          }),
     );
   }
 }
