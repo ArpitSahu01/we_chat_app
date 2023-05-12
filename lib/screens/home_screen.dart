@@ -12,6 +12,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //app bar
       appBar: AppBar(
         leading: const Icon(CupertinoIcons.home),
         title: const Text("We Chat"),
@@ -20,6 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
           IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert)),
         ],
       ),
+      //floating Action Button
       floatingActionButton: Padding(
         padding: const EdgeInsets.only(bottom: 10, left: 10),
         child: FloatingActionButton(

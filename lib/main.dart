@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:we_chat/screens/auth/login_screen.dart';
 import 'package:we_chat/screens/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
 }
+
+late Size mq;
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -25,7 +28,7 @@ class MyApp extends StatelessWidget {
                 fontSize: 19),
             backgroundColor: Colors.white,
           )),
-      home: HomeScreen(),
+      home: LoginScreen(),
     );
   }
 }
