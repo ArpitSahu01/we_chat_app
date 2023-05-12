@@ -25,8 +25,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    mq = MediaQuery.of(context).size;
-
     return Scaffold(
       //app bar
       appBar: AppBar(
@@ -55,13 +53,16 @@ class _LoginScreenState extends State<LoginScreen> {
                     backgroundColor: const Color.fromARGB(255, 223, 255, 187),
                     shape: const StadiumBorder(),
                     elevation: 1),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (_) => const HomeScreen()));
+                },
 
-                //google icon
+                // google icon
                 icon: Image.asset('assets/images/google.png',
                     height: mq.height * .03),
 
-                //login with google label
+                // login with google label
                 label: RichText(
                   text: const TextSpan(
                       style: TextStyle(color: Colors.black, fontSize: 16),
