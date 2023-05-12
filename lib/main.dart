@@ -1,13 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:we_chat/screens/auth/login_screen.dart';
 import 'package:we_chat/screens/auth/splash_screen.dart';
 import 'package:we_chat/screens/home_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-void main() async {
+void main()  {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  runApp(const MyApp());
+  //for setting full screen
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+
+  // for setting orientation to portrait as it will return future so we want to run the code after device is oriented in portrait mode
+
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp,DeviceOrientation.portraitDown]).then((value) async{
+    await Firebase.initializeApp();
+    runApp(const MyApp());
+  });
+
 }
 
 late Size mq;
