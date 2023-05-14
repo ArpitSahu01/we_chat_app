@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:we_chat/main.dart';
 import 'package:we_chat/models/chat_user.dart';
+import 'package:we_chat/screens/auth/profile_screen.dart';
 import 'package:we_chat/widgets/chat_user_card.dart';
 
 import '../api/apis.dart';
@@ -29,7 +30,16 @@ class _HomeScreenState extends State<HomeScreen> {
         title: const Text("We Chat"),
         actions: [
           IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
-          IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert)),
+          IconButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (_) => ProfileScreen(
+                              user: list[0],
+                            )));
+              },
+              icon: const Icon(Icons.more_vert)),
         ],
       ),
       //floating Action Button
