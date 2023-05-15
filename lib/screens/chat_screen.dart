@@ -1,6 +1,10 @@
+import 'dart:convert';
+import 'dart:developer';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:we_chat/api/apis.dart';
 import 'package:we_chat/main.dart';
 import 'package:we_chat/models/chat_user.dart';
 
@@ -26,25 +30,25 @@ class _ChatScreenState extends State<ChatScreen> {
         body: Column(children: [
           Expanded(
             child: StreamBuilder(
-              // stream: APIs.getAllUsers(),
+              stream: APIs.getAllMessages(),
               builder: (context, snapshot) {
                 switch (snapshot.connectionState) {
                   // if data is loading
                   case ConnectionState.waiting:
                   case ConnectionState.none:
-                  //  return const Center(
-                  //    child: CircularProgressIndicator(),
-                  //  );
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
 
                   // if some or all data is loaded then show it
                   case ConnectionState.active:
                   case ConnectionState.done:
-                    // final data = snapshot.data?.docs;
+                    final data = snapshot.data?.docs;
+                    log("Data: ${jsonEncode(data![0].data())}");
                     // _list =
                     //     data?.map((e) => ChatUser.fromJson(e.data())).toList() ??
                     //         [];
-
-                    final _list = ["hi", "hello"];
+                    final _list = ["Hi", "Hello", "Bye"];
 
                     if (_list.isNotEmpty) {
                       return ListView.builder(
@@ -52,12 +56,12 @@ class _ChatScreenState extends State<ChatScreen> {
                           padding: EdgeInsets.only(top: mq.height * 0.01),
                           physics: const BouncingScrollPhysics(),
                           itemBuilder: (context, index) {
-                            return Text("Message: ${_list[index]}");
+                            return Text("messages : ${_list[index]}");
                           });
                     } else {
                       return const Center(
                           child: Text(
-                        "Say Hii!! 👋",
+                        "Say Hii!",
                         textAlign: TextAlign.center,
                         style: TextStyle(fontSize: 20),
                       ));

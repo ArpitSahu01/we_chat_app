@@ -77,7 +77,7 @@ class APIs {
 
   // for getting all users from firestore database leaving us
   static Stream<QuerySnapshot<Map<String, dynamic>>> getAllUsers() {
-    return APIs.firestore
+    return firestore
         .collection("users")
         .where("id", isNotEqualTo: user.uid)
         .snapshots();
@@ -101,5 +101,12 @@ class APIs {
     await firestore.collection("users").doc(user.uid).update({
       "image": me.image,
     });
+  }
+
+  ///*********** Chat screen related API's ***********
+
+// for getting all messages of a specific conversation from firestore database
+  static Stream<QuerySnapshot<Map<String, dynamic>>> getAllMessages() {
+    return firestore.collection("messages").snapshots();
   }
 }
