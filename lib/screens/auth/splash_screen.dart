@@ -24,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
       // to change from full screen to normal screen
       SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
       SystemChrome.setSystemUIOverlayStyle(
-          const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
+          const SystemUiOverlayStyle(systemNavigationBarColor: Colors.white));
 
       if (APIs.auth.currentUser != null) {
         log('\n User: ${APIs.auth.currentUser}');
